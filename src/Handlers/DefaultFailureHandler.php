@@ -2,6 +2,7 @@
 
 namespace AtomicPHP\Failurehandling\Handlers;
 
+use \AtomicPHP\Failurehandling\Exceptions\ErrorException;
 use \Psr\Log\LoggerAwareInterface;
 use \Psr\Log\LoggerInterface;
 

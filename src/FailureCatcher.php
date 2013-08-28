@@ -2,6 +2,8 @@
 
 namespace AtomicPHP\Failurehandling;
 
+use \AtomicPHP\Utilities\UnregisterableCallback;
+
 /**
  * FailureCatcher
  *
