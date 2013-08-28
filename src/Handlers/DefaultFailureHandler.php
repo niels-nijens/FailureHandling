@@ -2,6 +2,7 @@
 
 namespace AtomicPHP\Failurehandling\Handlers;
 
+use \Psr\Log\LoggerAwareInterface;
 use \Psr\Log\LoggerInterface;
 
 /**
@@ -10,7 +11,7 @@ use \Psr\Log\LoggerInterface;
  * @author  Niels Nijens <nijens.niels@gmail.com>
  * @package AtomicPHP\Failurehandling\Handlers
  **/
-class DefaultFailureHandler implements FailureHandlerInterface {
+class DefaultFailureHandler implements FailureHandlerInterface, LoggerAwareInterface {
 
 	/**
 	 * The logger instance
