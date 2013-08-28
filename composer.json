@@ -1,0 +1,34 @@
+{
+    "name": "atomicphp/failurehandling",
+    "type": "library",
+    "description": "An open-source library for handling and logging failures / errors in PHP",
+    "keywords": [
+        "Failurehandling",
+        "Exceptions",
+        "Error",
+        "Logging"
+    ],
+    "homepage": "https://github.com/AtomicPHP/FailureHandling",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Niels Nijens",
+            "email": "nijens.niels@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "psr/log": "1.0.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "suggest": {
+        "atomicphp/logging": "The recommended logging library to use with FailureHandling."
+    },
+    "autoload": {
+        "psr-0": {
+            "AtomicPHP\\Failurehandling": "src/"
+        }
+    }
+}
