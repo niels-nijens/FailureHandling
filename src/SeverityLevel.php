@@ -12,43 +12,43 @@ namespace AtomicPHP\Failurehandling;
  **/
 class SeverityLevel {
 
-	/**
-	 * Emergency: system is unusable
-	 **/
-	const EMERGENCY = "emergency";
+    /**
+     * Emergency: system is unusable
+     **/
+    const EMERGENCY = "emergency";
 
-	/**
-	 * Alert: action must be taken immediately
-	 **/
-	const ALERT = "alert";
+    /**
+     * Alert: action must be taken immediately
+     **/
+    const ALERT = "alert";
 
-	/**
-	 * Critical: critical conditions
-	 **/
-	const CRITICAL = "critical";
+    /**
+     * Critical: critical conditions
+     **/
+    const CRITICAL = "critical";
 
-	/**
-	 * Error: error conditions
-	 **/
-	const ERROR = "error";
+    /**
+     * Error: error conditions
+     **/
+    const ERROR = "error";
 
-	/**
-	 * Warning: warning conditions
-	 **/
-	const WARNING = "warning";
+    /**
+     * Warning: warning conditions
+     **/
+    const WARNING = "warning";
 
-	/**
-	 * Notice: normal but significant condition
-	 **/
-	const NOTICE = "notice";
+    /**
+     * Notice: normal but significant condition
+     **/
+    const NOTICE = "notice";
 
-	/**
-	 * Informational: informational messages
-	 **/
-	const INFO = "info";
+    /**
+     * Informational: informational messages
+     **/
+    const INFO = "info";
 
-	/**
-	 * Debug: debug-level messages
-	 **/
-	const DEBUG = "debug";
+    /**
+     * Debug: debug-level messages
+     **/
+    const DEBUG = "debug";
 }
