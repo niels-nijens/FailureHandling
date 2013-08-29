@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-0": {
-            "AtomicPHP\\Failurehandling": "src/"
+            "AtomicPHP\\FailureHandling": "src/"
         }
     }
 }

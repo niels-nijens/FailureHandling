@@ -1,6 +1,6 @@
 <?php
 
-namespace AtomicPHP\Failurehandling;
+namespace AtomicPHP\FailureHandling;
 
 use \Psr\Log\LoggerInterface;
 

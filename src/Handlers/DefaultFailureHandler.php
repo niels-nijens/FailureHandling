@@ -1,8 +1,8 @@
 <?php
 
-namespace AtomicPHP\Failurehandling\Handlers;
+namespace AtomicPHP\FailureHandling\Handlers;
 
-use \AtomicPHP\Failurehandling\Exceptions\ErrorException;
+use \AtomicPHP\FailureHandling\Exceptions\ErrorException;
 use \Psr\Log\LoggerAwareInterface;
 use \Psr\Log\LoggerInterface;
 

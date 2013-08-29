@@ -1,6 +1,6 @@
 <?php
 
-namespace AtomicPHP\Failurehandling\Exceptions;
+namespace AtomicPHP\FailureHandling\Exceptions;
 
 /**
  * ErrorException
