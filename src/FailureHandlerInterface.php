@@ -2,6 +2,7 @@
 
 namespace AtomicPHP\FailureHandling;
 
+use \Exception;
 use \Psr\Log\LoggerInterface;
 
 /**
