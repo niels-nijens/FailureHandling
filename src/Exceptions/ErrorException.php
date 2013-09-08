@@ -2,6 +2,8 @@
 
 namespace AtomicPHP\FailureHandling\Exceptions;
 
+use \AtomicPHP\FailureHandling\SeverityLevel;
+
 /**
  * ErrorException
  *
@@ -22,6 +24,7 @@ class ErrorException extends \ErrorException {
         switch ($this->getCode() ) {
             case E_ERROR:
             case E_USER_ERROR:
+            case E_RECOVERABLE_ERROR:
                 return SeverityLevel::ERROR;
                 break;
             case E_WARNING:
