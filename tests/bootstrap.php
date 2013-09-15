@@ -3,8 +3,10 @@
  * Bootstrap file for PHPUnit tests
  *
  * @author Niels Nijens <nijens.niels@gmail.com>
- */
+ **/
 require_once __DIR__ . "/../vendor/autoload.php";
+
+require_once __DIR__ . "/../vendor/atomicphp/utilities/tests/bootstrap.php";
 
 spl_autoload_register(function($className) {
     $vendorNamespace = "AtomicPHP\\FailureHandling\\";
