@@ -10,8 +10,8 @@ use \AtomicPHP\Utilities\UnregisterableCallback;
  * @author  Niels Nijens <nijens.niels@gmail.com>
  * @package AtomicPHP\Failurehandling
  **/
-class FailureCatcher {
-
+class FailureCatcher
+{
     /**
      * The failure handler instance implementing FailureHandlerInterface
      *
@@ -48,9 +48,6 @@ class FailureCatcher {
      **/
     public static function start(FailureHandlerInterface $failureHandler, $additionalShutdownCallback = null) {
         ob_start();
-        if (php_sapi_name() === "cli") {
-            ob_implicit_flush(true);
-        }
 
         static::$failureHandler = $failureHandler;
         set_error_handler(array($failureHandler, "handleError") );
@@ -70,9 +67,10 @@ class FailureCatcher {
      * Stops the failure catcher
      *
      * @access public
+     * @param  boolean $flushOutputBuffer
      * @return void
      **/
-    public static function stop() {
+    public static function stop($flushOutputBuffer = false) {
         if (static::$failureHandler instanceof FailureHandlerInterface) {
             restore_error_handler();
             restore_exception_handler();
@@ -82,7 +80,10 @@ class FailureCatcher {
             static::$shutdownCallback->unregister();
         }
 
-        if (ob_get_length() > 0) {
+        if (ob_get_length() > 0 && $flushOutputBuffer === true) {
+            ob_end_flush();
+        }
+        elseif (ob_get_level() > 1) {
             ob_end_clean();
         }
 
@@ -102,13 +103,7 @@ class FailureCatcher {
     public static function shutdown() {
         $error = error_get_last();
         if (is_array($error) ) {
-            $stacktrace = null;
-            if (ob_get_length() > 0) {
-                $stacktrace = ob_get_clean();
-            }
-            $context = array("stacktrace" => $stacktrace);
-
-            static::$failureHandler->handleError($error["type"], $error["message"], $error["file"], $error["line"], $context);
+            static::handleShutdownError($error);
         }
 
         if (is_callable(static::$additionalShutdownCallback) ) {
@@ -118,5 +113,24 @@ class FailureCatcher {
         if (ob_get_length() > 0) {
             ob_end_clean();
         }
+    }
+
+    /**
+     * handleShutdownError
+     *
+     * Handles errors that were not handled by FailureHandlerInterface::handleError
+     *
+     * @access protected
+     * @param  array $error
+     * @return void
+     **/
+    protected static function handleShutdownError(array $error) {
+        $stacktrace = null;
+        if (ob_get_length() > 0) {
+            $stacktrace = ob_get_clean();
+        }
+        $context = array("stacktrace" => $stacktrace);
+
+        static::$failureHandler->handleError($error["type"], $error["message"], $error["file"], $error["line"], $context);
     }
 }
