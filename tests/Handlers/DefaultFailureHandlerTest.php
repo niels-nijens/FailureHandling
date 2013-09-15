@@ -31,12 +31,31 @@ class DefaultFailureHandlerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * testHandleErrorReturnsFalse
+     *
+     * Tests if DefaultFailureHandler::handleError returns false
+     *
+     * @access public
+     * @return void
+     * @todo Assert logger contents
+     **/
+    public function testHandleErrorReturnsFalse() {
+        $previousLevel = error_reporting(0);
+
+        $failureHandler = new DefaultFailureHandler();
+        $this->assertFalse($failureHandler->handleError(E_NOTICE, "Error message", __FILE__, __LINE__) );
+
+        error_reporting($previousLevel);
+    }
+
+    /**
      * testHandleException
      *
      * Tests if DefaultFailureHandler::handleException logs the exception to the instance implementing LoggerInterface
      *
      * @access public
      * @return void
+     * @todo Assert logger contents
      **/
     public function testHandleException() {
         $failureHandler = new DefaultFailureHandler();
@@ -54,13 +73,14 @@ class DefaultFailureHandlerTest extends \PHPUnit_Framework_TestCase
      *
      * @access public
      * @return void
+     * @todo Assert logger contents
      **/
     public function testHandleExceptionAfterHandleError() {
         $mockLogger = $this->getMock("\Psr\Log\LoggerInterface");
 
         $failureHandler = new DefaultFailureHandler();
         $failureHandler->setLogger($mockLogger);
-        
+
         try {
             $failureHandler->handleError(E_ERROR, "Error message", __FILE__, __LINE__);
         }
