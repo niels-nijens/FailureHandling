@@ -14,8 +14,8 @@ use \Psr\Log\LoggerInterface;
  * @author  Niels Nijens <nijens.niels@gmail.com>
  * @package AtomicPHP\Failurehandling\Handlers
  **/
-class DefaultFailureHandler implements FailureHandlerInterface, LoggerAwareInterface {
-
+class DefaultFailureHandler implements FailureHandlerInterface, LoggerAwareInterface
+{
     /**
      * The logger instance
      *
@@ -50,12 +50,12 @@ class DefaultFailureHandler implements FailureHandlerInterface, LoggerAwareInter
      * @param  array   $context
      * @return boolean
      * @throws ErrorException
-     * @todo   Implement severities for ErrorException
+     * @todo   Implement $context
      **/
     public function handleError($errorNumber, $message, $file, $line, array $context = array() ) {
         // error_reporting is disabled for this type of error or an @ error-control operator
         // was prepended to an expression. (@see http://php.net/manual/en/language.operators.errorcontrol.php)
-        if ( (error_reporting() & $errorNumber) === false) {
+        if ( (error_reporting() & $errorNumber) == false) {
             return false;
         }
 
