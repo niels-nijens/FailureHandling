@@ -6,8 +6,6 @@
  **/
 require_once __DIR__ . "/../vendor/autoload.php";
 
-require_once __DIR__ . "/../vendor/atomicphp/utilities/tests/bootstrap.php";
-
 spl_autoload_register(function($className) {
     $vendorNamespace = "AtomicPHP\\FailureHandling\\";
     if (strpos($className, $vendorNamespace) === 0) {
