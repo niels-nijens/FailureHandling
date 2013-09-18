@@ -4,6 +4,7 @@
     "description": "An open-source library for handling and logging failures / errors in PHP",
     "keywords": [
         "Failurehandling",
+        "Errorhandling",
         "Exceptions",
         "Error",
         "Logging"
@@ -28,8 +29,6 @@
         "atomicphp/logging": "The recommended logging library to use with FailureHandling."
     },
     "autoload": {
-        "psr-0": {
-            "AtomicPHP\\FailureHandling": "src/"
-        }
+        "classmap": ["src/"]
     }
 }
