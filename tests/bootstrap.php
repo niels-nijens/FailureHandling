@@ -12,4 +12,4 @@ spl_autoload_register(function($className) {
         $classNameFile = substr($className, strlen($vendorNamespace) ) . ".php";
         include __DIR__ . "/../src/" . str_replace("\\", DIRECTORY_SEPARATOR, $classNameFile);
     }
-});
+}, true);
