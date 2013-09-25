@@ -1,7 +1,7 @@
 {
     "name": "atomicphp/failurehandling",
     "type": "library",
-    "description": "An open-source library for handling and logging failures / errors in PHP",
+    "description": "An open-source library for handling and logging failures (errors and exceptions) in PHP",
     "keywords": [
         "Failurehandling",
         "Errorhandling",
