@@ -33,7 +33,8 @@ class DefaultFailureHandler implements FailureHandlerInterface, LoggerAwareInter
      * @param  LoggerInterface $logger
      * @return void
      **/
-    public function setLogger(LoggerInterface $logger) {
+    public function setLogger(LoggerInterface $logger)
+    {
         $this->logger = $logger;
     }
 
@@ -52,7 +53,8 @@ class DefaultFailureHandler implements FailureHandlerInterface, LoggerAwareInter
      * @throws ErrorException
      * @todo   Implement $context
      **/
-    public function handleError($errorNumber, $message, $file, $line, array $context = array() ) {
+    public function handleError($errorNumber, $message, $file, $line, array $context = array() )
+    {
         // error_reporting is disabled for this type of error or an @ error-control operator
         // was prepended to an expression. (@see http://php.net/manual/en/language.operators.errorcontrol.php)
         if ( (error_reporting() & $errorNumber) == false) {
@@ -72,7 +74,8 @@ class DefaultFailureHandler implements FailureHandlerInterface, LoggerAwareInter
      * @return void
      * @todo   Make default / fallback log level configurable
      **/
-    public function handleException(Exception $exception) {
+    public function handleException(Exception $exception)
+    {
         if (method_exists($exception, "getSeverityLevel") ) {
             $this->logger->log($exception->getSeverityLevel(), $exception->getMessage(), $this->getExceptionContext($exception) );
         }
@@ -90,7 +93,8 @@ class DefaultFailureHandler implements FailureHandlerInterface, LoggerAwareInter
      * @param  Exception $exception
      * @return array
      **/
-    protected function getExceptionContext(Exception $exception) {
+    protected function getExceptionContext(Exception $exception)
+    {
         return array(
             "exception" => $exception,
         );

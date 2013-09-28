@@ -11,8 +11,8 @@ use \Psr\Log\LoggerInterface;
  * @author  Niels Nijens <nijens.niels@gmail.com>
  * @package AtomicPHP\Failurehandling
  **/
-interface FailureHandlerInterface {
-
+interface FailureHandlerInterface
+{
     /**
      * setLogger
      *

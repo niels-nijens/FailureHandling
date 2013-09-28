@@ -10,8 +10,8 @@ use \AtomicPHP\FailureHandling\SeverityLevel;
  * @author  Niels Nijens <nijens.niels@gmail.com>
  * @package AtomicPHP\Failurehandling\Exceptions
  **/
-class ErrorException extends \ErrorException {
-
+class ErrorException extends \ErrorException
+{
     /**
      * getSeverityLevel
      *
@@ -20,7 +20,8 @@ class ErrorException extends \ErrorException {
      * @access public
      * @return string
      **/
-    public function getSeverityLevel() {
+    public function getSeverityLevel()
+    {
         switch ($this->getCode() ) {
             case E_ERROR:
             case E_USER_ERROR:

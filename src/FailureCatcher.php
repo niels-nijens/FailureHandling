@@ -46,7 +46,8 @@ class FailureCatcher
      * @param  callable                $additionalShutdownCallback
      * @return void
      **/
-    public static function start(FailureHandlerInterface $failureHandler, $additionalShutdownCallback = null) {
+    public static function start(FailureHandlerInterface $failureHandler, $additionalShutdownCallback = null)
+    {
         ob_start();
 
         static::$failureHandler = $failureHandler;
@@ -70,7 +71,8 @@ class FailureCatcher
      * @param  boolean $flushOutputBuffer
      * @return void
      **/
-    public static function stop($flushOutputBuffer = false) {
+    public static function stop($flushOutputBuffer = false)
+    {
         if (static::$failureHandler instanceof FailureHandlerInterface) {
             restore_error_handler();
             restore_exception_handler();
@@ -100,7 +102,8 @@ class FailureCatcher
      * @access public
      * @return void
      **/
-    public static function shutdown() {
+    public static function shutdown()
+    {
         $error = error_get_last();
         if (is_array($error) ) {
             static::handleShutdownError($error);
@@ -124,7 +127,8 @@ class FailureCatcher
      * @param  array $error
      * @return void
      **/
-    protected static function handleShutdownError(array $error) {
+    protected static function handleShutdownError(array $error)
+    {
         $stacktrace = null;
         if (ob_get_length() > 0) {
             $stacktrace = ob_get_clean();

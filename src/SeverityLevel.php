@@ -10,8 +10,8 @@ namespace AtomicPHP\FailureHandling;
  * @author  Niels Nijens <nijens.niels@gmail.com>
  * @package AtomicPHP\Failurehandling
  **/
-class SeverityLevel {
-
+class SeverityLevel
+{
     /**
      * Emergency: system is unusable
      **/
