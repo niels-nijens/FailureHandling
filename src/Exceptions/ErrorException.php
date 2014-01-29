@@ -1,14 +1,14 @@
 <?php
 
-namespace AtomicPHP\FailureHandling\Exceptions;
+namespace Nijens\FailureHandling\Exceptions;
 
-use \AtomicPHP\FailureHandling\SeverityLevel;
+use Nijens\FailureHandling\SeverityLevel;
 
 /**
  * ErrorException
  *
  * @author  Niels Nijens <nijens.niels@gmail.com>
- * @package AtomicPHP\Failurehandling\Exceptions
+ * @package Nijens\Failurehandling\Exceptions
  **/
 class ErrorException extends \ErrorException
 {
@@ -27,21 +27,17 @@ class ErrorException extends \ErrorException
             case E_USER_ERROR:
             case E_RECOVERABLE_ERROR:
                 return SeverityLevel::ERROR;
-                break;
             case E_WARNING:
             case E_USER_WARNING:
                 return SeverityLevel::WARNING;
-                break;
             case E_STRICT:
             case E_NOTICE:
             case E_USER_NOTICE:
             case E_DEPRECATED:
             case E_USER_DEPRECATED:
                 return SeverityLevel::NOTICE;
-                break;
             default:
                 return SeverityLevel::CRITICAL;
-                break;
         }
     }
 }

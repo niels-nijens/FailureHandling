@@ -1,15 +1,15 @@
 <?php
 
-namespace AtomicPHP\FailureHandling\Tests;
+namespace Nijens\FailureHandling\Tests;
 
-use \AtomicPHP\FailureHandling\SeverityLevel;
-use \AtomicPHP\FailureHandling\Exceptions\ErrorException;
+use Nijens\FailureHandling\SeverityLevel;
+use Nijens\FailureHandling\Exceptions\ErrorException;
 
 /**
  * ErrorExceptionTest
  *
  * @author  Niels Nijens <nijens.niels@gmail.com>
- * @package AtomicPHP\FailureHandling\Tests
+ * @package Nijens\FailureHandling\Tests
  **/
 class ErrorExceptionTest extends \PHPUnit_Framework_TestCase
 {

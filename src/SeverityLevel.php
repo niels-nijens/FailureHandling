@@ -1,6 +1,6 @@
 <?php
 
-namespace AtomicPHP\FailureHandling;
+namespace Nijens\FailureHandling;
 
 /**
  * SeverityLevel
@@ -8,7 +8,7 @@ namespace AtomicPHP\FailureHandling;
  * Implements RFC 5424 severity levels as constants @see http://tools.ietf.org/html/rfc5424
  *
  * @author  Niels Nijens <nijens.niels@gmail.com>
- * @package AtomicPHP\Failurehandling
+ * @package Nijens\Failurehandling
  **/
 class SeverityLevel
 {

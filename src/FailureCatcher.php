@@ -1,14 +1,14 @@
 <?php
 
-namespace AtomicPHP\FailureHandling;
+namespace Nijens\FailureHandling;
 
-use \AtomicPHP\Utilities\UnregisterableCallback;
+use Nijens\Utilities\UnregisterableCallback;
 
 /**
  * FailureCatcher
  *
  * @author  Niels Nijens <nijens.niels@gmail.com>
- * @package AtomicPHP\Failurehandling
+ * @package Nijens\Failurehandling
  **/
 class FailureCatcher
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace AtomicPHP\FailureHandling;
+namespace Nijens\FailureHandling;
 
 use \Exception;
 use \Psr\Log\LoggerInterface;
@@ -9,7 +9,7 @@ use \Psr\Log\LoggerInterface;
  * FailureHandlerInterface
  *
  * @author  Niels Nijens <nijens.niels@gmail.com>
- * @package AtomicPHP\Failurehandling
+ * @package Nijens\Failurehandling
  **/
 interface FailureHandlerInterface
 {

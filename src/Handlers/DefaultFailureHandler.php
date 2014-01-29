@@ -1,18 +1,18 @@
 <?php
 
-namespace AtomicPHP\FailureHandling\Handlers;
+namespace Nijens\FailureHandling\Handlers;
 
-use \Exception;
-use \AtomicPHP\FailureHandling\Exceptions\ErrorException;
-use \AtomicPHP\FailureHandling\FailureHandlerInterface;
-use \Psr\Log\LoggerAwareInterface;
-use \Psr\Log\LoggerInterface;
+use Exception;
+use Nijens\FailureHandling\Exceptions\ErrorException;
+use Nijens\FailureHandling\FailureHandlerInterface;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * DefaultFailureHandler
  *
  * @author  Niels Nijens <nijens.niels@gmail.com>
- * @package AtomicPHP\Failurehandling\Handlers
+ * @package Nijens\Failurehandling\Handlers
  **/
 class DefaultFailureHandler implements FailureHandlerInterface, LoggerAwareInterface
 {

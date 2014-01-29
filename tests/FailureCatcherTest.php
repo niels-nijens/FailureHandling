@@ -1,15 +1,15 @@
 <?php
 
-namespace AtomicPHP\FailureHandling\Tests;
+namespace Nijens\FailureHandling\Tests;
 
-use \AtomicPHP\FailureHandling\FailureCatcher;
-use \AtomicPHP\FailureHandling\Handlers\DefaultFailureHandler;
+use Nijens\FailureHandling\FailureCatcher;
+use Nijens\FailureHandling\Handlers\DefaultFailureHandler;
 
 /**
  * FailureCatcherTest
  *
  * @author  Niels Nijens <nijens.niels@gmail.com>
- * @package AtomicPHP\FailureHandling\Tests
+ * @package Nijens\FailureHandling\Tests
  **/
 class FailureCatcherTest extends \PHPUnit_Framework_TestCase
 {

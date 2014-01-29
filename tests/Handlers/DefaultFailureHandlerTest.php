@@ -1,16 +1,16 @@
 <?php
 
-namespace AtomicPHP\FailureHandling\Tests;
+namespace Nijens\FailureHandling\Tests;
 
-use \Exception;
-use \AtomicPHP\FailureHandling\Exceptions\ErrorException;
-use \AtomicPHP\FailureHandling\Handlers\DefaultFailureHandler;
+use Exception;
+use Nijens\FailureHandling\Exceptions\ErrorException;
+use Nijens\FailureHandling\Handlers\DefaultFailureHandler;
 
 /**
  * DefaultFailureHandlerTest
  *
  * @author  Niels Nijens <nijens.niels@gmail.com>
- * @package AtomicPHP\FailureHandling\Tests
+ * @package Nijens\FailureHandling\Tests
  **/
 class DefaultFailureHandlerTest extends \PHPUnit_Framework_TestCase
 {
