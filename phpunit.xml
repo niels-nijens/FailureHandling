@@ -7,11 +7,10 @@
     convertNoticesToExceptions='true'
     convertWarningsToExceptions='true'
     processIsolation='false'
-    stopOnFailure='false'
-    bootstrap='tests/bootstrap.php'>
+    stopOnFailure='false'>
 
     <testsuites>
-        <testsuite name='AtomicPHP_FailureHandling'>
+        <testsuite name='Nijens_FailureHandling'>
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
