@@ -3,6 +3,7 @@
 namespace Nijens\FailureHandling\Tests;
 
 use Exception;
+use PHPUnit_Framework_TestCase;
 use Nijens\FailureHandling\Exceptions\ErrorException;
 use Nijens\FailureHandling\Handlers\DefaultFailureHandler;
 
@@ -12,7 +13,7 @@ use Nijens\FailureHandling\Handlers\DefaultFailureHandler;
  * @author  Niels Nijens <nijens.niels@gmail.com>
  * @package Nijens\FailureHandling\Tests
  **/
-class DefaultFailureHandlerTest extends \PHPUnit_Framework_TestCase
+class DefaultFailureHandlerTest extends PHPUnit_Framework_TestCase
 {
     /**
      * testHandleError

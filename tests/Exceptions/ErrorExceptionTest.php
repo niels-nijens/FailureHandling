@@ -2,6 +2,7 @@
 
 namespace Nijens\FailureHandling\Tests;
 
+use PHPUnit_Framework_TestCase;
 use Nijens\FailureHandling\SeverityLevel;
 use Nijens\FailureHandling\Exceptions\ErrorException;
 
@@ -11,7 +12,7 @@ use Nijens\FailureHandling\Exceptions\ErrorException;
  * @author  Niels Nijens <nijens.niels@gmail.com>
  * @package Nijens\FailureHandling\Tests
  **/
-class ErrorExceptionTest extends \PHPUnit_Framework_TestCase
+class ErrorExceptionTest extends PHPUnit_Framework_TestCase
 {
     /**
      * testGetSeverityLevel

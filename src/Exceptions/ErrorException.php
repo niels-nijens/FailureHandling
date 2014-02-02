@@ -2,6 +2,7 @@
 
 namespace Nijens\FailureHandling\Exceptions;
 
+use ErrorException;
 use Nijens\FailureHandling\SeverityLevel;
 
 /**
@@ -10,7 +11,7 @@ use Nijens\FailureHandling\SeverityLevel;
  * @author  Niels Nijens <nijens.niels@gmail.com>
  * @package Nijens\Failurehandling\Exceptions
  **/
-class ErrorException extends \ErrorException
+class ErrorException extends ErrorException
 {
     /**
      * getSeverityLevel

@@ -2,6 +2,7 @@
 
 namespace Nijens\FailureHandling\Tests;
 
+use PHPUnit_Framework_TestCase;
 use Nijens\FailureHandling\FailureCatcher;
 use Nijens\FailureHandling\Handlers\DefaultFailureHandler;
 
@@ -11,7 +12,7 @@ use Nijens\FailureHandling\Handlers\DefaultFailureHandler;
  * @author  Niels Nijens <nijens.niels@gmail.com>
  * @package Nijens\FailureHandling\Tests
  **/
-class FailureCatcherTest extends \PHPUnit_Framework_TestCase
+class FailureCatcherTest extends PHPUnit_Framework_TestCase
 {
     /**
      * The boolean indicating if the additional shutdown callback has been called
