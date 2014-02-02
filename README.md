@@ -44,12 +44,16 @@ About
 This is one of the AtomicPHP library series trying to achieve ultimate flexibility for PHP developers through [separation of concerns](http://en.wikipedia.org/wiki/Separation_of_concerns).
 
 
-##### Author #####
-Niels Nijens - https://github.com/niels-nijens/
+##### Versioning #####
+FailureHandling uses [Semantic Versioning 2](http://semver.org/) as guideline for new versions.
 
 
 ##### License #####
 FailureHandling is licensed under the MIT License - see the `LICENSE` file for details.
+
+
+##### Author #####
+Niels Nijens - https://github.com/niels-nijens/
 
 
 ##### Acknowledgements #####
