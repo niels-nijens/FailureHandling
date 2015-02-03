@@ -4,7 +4,7 @@ An error and exception handling library for PHP 5.3+
 
 [![Build Status](https://travis-ci.org/niels-nijens/FailureHandling.png?branch=master)](https://travis-ci.org/niels-nijens/FailureHandling)
 [![Coverage Status](https://coveralls.io/repos/niels-nijens/FailureHandling/badge.png?branch=master)](https://coveralls.io/r/niels-nijens/FailureHandling?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/71ad9726-aa31-4e40-add4-0aa5afba47b1/mini.png)](https://insight.sensiolabs.com/projects/71ad9726-aa31-4e40-add4-0aa5afba47b1)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/3209d776-207e-400f-b45e-f003bb2f3bde/mini.png)](https://insight.sensiolabs.com/projects/3209d776-207e-400f-b45e-f003bb2f3bde)
 [![Latest Stable Version](https://poser.pugx.org/niels-nijens/failurehandling/v/stable.png)](https://packagist.org/packages/niels-nijens/failurehandling)
 
 
