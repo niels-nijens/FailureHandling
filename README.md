@@ -58,6 +58,6 @@ Niels Nijens - https://github.com/niels-nijens/
 
 
 ##### Acknowledgements #####
-This library is inspired by an idea about error and exception handling of Giso Stallenberg.
+This library is inspired by an idea about error and exception handling of [Giso Stallenberg](//github.com/gisoconnectholland).
 
 
