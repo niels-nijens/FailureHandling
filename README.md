@@ -10,14 +10,10 @@ An error and exception handling library for PHP 5.3+
 
 Installation using Composer
 ---------------------------
-Add the following to your composer.json:
+Run the following command to add the package to your composer.json:
 
 ```
-{
-    "require": {
-        "niels-nijens/failurehandling": "~2.0"
-    }
-}
+composer require niels-nijens/failurehandling
 ```
 
 This library also requires a [PSR-3](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md) compatible logger like [niels-nijens/Logging](https://github.com/niels-nijens/Logging) or [Monolog](https://github.com/Seldaek/monolog) for the actual logging of errors and exceptions.
