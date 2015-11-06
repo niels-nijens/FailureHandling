@@ -64,8 +64,6 @@ class FailureCatcherTest extends PHPUnit_Framework_TestCase
 
         FailureCatcher::start($failureHandler);
 
-        $this->assertCount(2, ob_get_status(true) );
-
         $this->assertEquals(array($failureHandler, "handleError"), set_error_handler(function(){} ) );
         $this->assertEquals(array($failureHandler, "handleException"), set_exception_handler(function(){} ) );
 
@@ -90,62 +88,13 @@ class FailureCatcherTest extends PHPUnit_Framework_TestCase
 
         FailureCatcher::start($failureHandler);
 
-        $this->assertCount(2, ob_get_status(true) );
-
         FailureCatcher::stop();
-
-        $this->assertCount(1, ob_get_status(true) );
 
         $this->assertNotEquals(array($failureHandler, "handleError"), set_error_handler(function(){} ) );
         $this->assertNotEquals(array($failureHandler, "handleException"), set_exception_handler(function(){} ) );
 
         restore_error_handler();
         restore_exception_handler();
-    }
-
-    /**
-     * testStopWithFlushOutputBufferWithoutBufferLength
-     *
-     * Tests if:
-     * - The started output buffer is stopped
-     * - The following error is not thrown:
-     *    "ob_end_clean(): failed to delete buffer. No buffer to delete"
-     *
-     * @depends testStop
-     * @access  public
-     * @return  void
-     **/
-    public function testStopWithFlushOutputBufferWithoutBufferLength() {
-        ob_start();
-
-        $this->assertCount(2, ob_get_status(true) );
-
-        FailureCatcher::stop(true);
-
-        $this->assertCount(1, ob_get_status(true) );
-    }
-
-    /**
-     * testStopWithFlushOutputBufferWithBufferLength
-     *
-     * Tests if the output buffer is stopped and flushed in FailureCatcher::stop with argument true
-     *
-     * @depends testStop
-     * @access  public
-     * @return  void
-     **/
-    public function testStopWithFlushOutputBufferWithBufferLength() {
-        ob_start();
-        ob_start();
-
-        $this->fillOutputbuffer();
-
-        $this->assertCount(3, ob_get_status(true) );
-
-        FailureCatcher::stop(true);
-
-        $this->assertEquals(2, strlen(ob_get_clean() ) );
-        $this->assertCount(1, ob_get_status(true) );
     }
 
     /**
@@ -170,27 +119,36 @@ class FailureCatcherTest extends PHPUnit_Framework_TestCase
         FailureCatcher::stop();
     }
 
-    /**
-     * testShutdownOutputbufferStopped
-     *
-     * Tests if the output buffer is stopped and cleaned in FailureCatcher::shutdown
-     *
-     * @depends testStart
-     * @depends testStop
-     * @access  public
-     * @return  void
-     **/
-    public function testShutdownOutputbufferStopped() {
-        ob_start();
-        ob_start();
+    public function testSetPHPConfigurationOptionsToAvoidErrorOutputAreWrong() {
+        $previousLogErrors = ini_set("log_errors", "1");
+        $previousErrorLog = ini_set("error_log", "");
+        $previousDisplayErrors = ini_set("display_errors", "0");
 
-        $this->fillOutputbuffer();
+        FailureCatcher::start(new DefaultFailureHandler() );
+        FailureCatcher::stop();
 
-        $this->assertEquals(2, ob_get_length() );
+        $this->assertEquals("0", ini_get("log_errors") );
+        $this->assertEquals("0", ini_get("display_errors") );
 
-        FailureCatcher::shutdown();
+        ini_set("log_errors", $previousLogErrors);
+        ini_set("error_log", $previousErrorLog);
+        ini_set("display_errors", $previousDisplayErrors);
+    }
 
-        $this->assertEquals(0, ob_get_length() );
+    public function testSetPHPConfigurationOptionsToAvoidErrorOutputAreRight() {
+        $previousLogErrors = ini_set("log_errors", "0");
+        $previousErrorLog = ini_set("error_log", "/tmp/error_log");
+        $previousDisplayErrors = ini_set("display_errors", "1");
+
+        FailureCatcher::start(new DefaultFailureHandler() );
+        FailureCatcher::stop();
+
+        $this->assertEquals("0", ini_get("log_errors") );
+        $this->assertEquals("0", ini_get("display_errors") );
+
+        ini_set("log_errors", $previousLogErrors);
+        ini_set("error_log", $previousErrorLog);
+        ini_set("display_errors", $previousDisplayErrors);
     }
 
     /**
@@ -203,17 +161,5 @@ class FailureCatcherTest extends PHPUnit_Framework_TestCase
      **/
     public function additionalShutdownCallback() {
         static::$additionalShutdownCallbackCalled = true;
-    }
-
-    /**
-     * fillOutputbuffer
-     *
-     * Fills the output buffer without being visible in CLI
-     *
-     * @access protected
-     * @return void
-     **/
-    protected function fillOutputbuffer() {
-        print " \010";
     }
 }

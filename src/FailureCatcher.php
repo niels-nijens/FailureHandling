@@ -48,7 +48,7 @@ class FailureCatcher
      **/
     public static function start(FailureHandlerInterface $failureHandler, $additionalShutdownCallback = null)
     {
-        ob_start();
+        static::setPHPConfigurationOptionsToAvoidErrorOutput();
 
         static::$failureHandler = $failureHandler;
         set_error_handler(array($failureHandler, "handleError") );
@@ -63,15 +63,38 @@ class FailureCatcher
     }
 
     /**
+     * setPHPConfigurationOptionsToAvoidErrorOutput
+     *
+     * Sets the ini options in a way that make sure errors are not outputted to the browser or cli
+     *
+     * @return boolean
+     */
+    private static function setPHPConfigurationOptionsToAvoidErrorOutput() {
+        $changed = false;
+
+        // an empty log while logging will produce output on errors that cannot be handled by an error-handler
+        if (ini_get("log_errors") === "1" && ini_get("error_log") === "") {
+            ini_set("log_errors", "0");
+            $changed = true;
+        }
+        // do not output errors
+        if (ini_get("display_errors") === "1") {
+            ini_set("display_errors", "0");
+            $changed = true;
+        }
+
+        return $changed;
+    }
+
+    /**
      * stop
      *
      * Stops the failure catcher
      *
      * @access public
-     * @param  boolean $flushOutputBuffer
      * @return void
      **/
-    public static function stop($flushOutputBuffer = false)
+    public static function stop()
     {
         if (static::$failureHandler instanceof FailureHandlerInterface) {
             restore_error_handler();
@@ -80,13 +103,6 @@ class FailureCatcher
 
         if (static::$shutdownCallback instanceof UnregisterableCallback) {
             static::$shutdownCallback->unregister();
-        }
-
-        if (ob_get_length() > 0 && $flushOutputBuffer === true) {
-            ob_end_flush();
-        }
-        elseif (ob_get_level() > 1) {
-            ob_end_clean();
         }
 
         static::$failureHandler = null;
@@ -111,10 +127,6 @@ class FailureCatcher
 
         if (is_callable(static::$additionalShutdownCallback) ) {
             call_user_func(static::$additionalShutdownCallback);
-        }
-
-        if (ob_get_length() > 0) {
-            ob_end_clean();
         }
     }
 
