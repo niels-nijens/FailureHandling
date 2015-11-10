@@ -3,7 +3,6 @@
 namespace Nijens\FailureHandling;
 
 use \Exception;
-use \Psr\Log\LoggerInterface;
 
 /**
  * FailureHandlerInterface
@@ -13,17 +12,6 @@ use \Psr\Log\LoggerInterface;
  **/
 interface FailureHandlerInterface
 {
-    /**
-     * setLogger
-     *
-     * Sets the logger instance to log the failures
-     *
-     * @access public
-     * @param  LoggerInterface $logger
-     * @return void
-     **/
-    public function setLogger(LoggerInterface $logger);
-
     /**
      * handleError
      *
