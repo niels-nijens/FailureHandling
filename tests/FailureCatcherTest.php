@@ -2,9 +2,10 @@
 
 namespace Nijens\FailureHandling\Tests;
 
-use PHPUnit_Framework_TestCase;
 use Nijens\FailureHandling\FailureCatcher;
 use Nijens\FailureHandling\Handlers\DefaultFailureHandler;
+use Nijens\FailureHandling\Handlers\NullFailureHandler;
+use PHPUnit_Framework_TestCase;
 
 /**
  * FailureCatcherTest
@@ -149,6 +150,89 @@ class FailureCatcherTest extends PHPUnit_Framework_TestCase
         ini_set("log_errors", $previousLogErrors);
         ini_set("error_log", $previousErrorLog);
         ini_set("display_errors", $previousDisplayErrors);
+    }
+
+    /**
+     * testShutdownWithoutError
+     *
+     * Creates a subproces and tests a shutdown without any errors
+     *
+     * @depends testStart
+     * @depends testStop
+     * @access  public
+     * @return  void
+     */
+    public function testShutdownWithoutError() {
+        $pid = pcntl_fork();
+        if (-1 == $pid) {
+            die('Unable to fork');
+        } elseif (!$pid) {
+            FailureCatcher::start(new NullFailureHandler(), array($this, 'shutdownWithoutError'));
+            exit();
+        }
+        else { // parent, wait for child
+            pcntl_wait($status);
+            $this->assertEquals(0, $status, 'Expected ok status code of sub process');
+        }
+    }
+
+    /**
+     * shutdownWithoutError
+     *
+     * The shutdown handler of the shutdown without any error
+     *
+     * @depends testStart
+     * @depends testStop
+     * @access  public
+     * @return  void
+     */
+    public function shutdownWithoutError() {
+        $error = error_get_last();
+        if (!is_null($error) ) { // unable to get assertions to parent process
+            echo "\n\033[1;37m\033[41mThere should be no error\033[0m\n";
+        }
+    }
+
+    /**
+     * testShutdownWithError
+     *
+     * Creates a subproces and tests a shutdown with a errors
+     *
+     * @depends testStart
+     * @depends testStop
+     * @access  public
+     * @return  void
+     */
+    public function testShutdownWithError() {
+        $pid = pcntl_fork();
+        if (-1 == $pid) {
+            die('Unable to fork');
+        } elseif (!$pid) {
+            FailureCatcher::start(new NullFailureHandler(), array($this, 'shutdownWithError'));
+            nonExistingFunction();
+            exit();
+        }
+        else { // parent, wait for child
+            pcntl_wait($status);
+            $this->assertEquals(65280, $status, 'Expected fault status code of sub process');
+        }
+    }
+
+    /**
+     * shutdownWithError
+     *
+     * The shutdown handler of the shutdown with a error
+     *
+     * @depends testStart
+     * @depends testStop
+     * @access  public
+     * @return  void
+     */
+    public function shutdownWithError() {
+        $error = error_get_last();
+        if (!is_array($error) ) { // unable to get assertions to parent process
+            echo "\n\033[1;37m\033[41mThere should be an error\033[0m\n";
+        }
     }
 
     /**
